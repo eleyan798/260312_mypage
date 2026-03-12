@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --paper: #f8f8f6;
-  --ink: #171716;
+  --paper: #f5f5f5;
+  --ink: #202020;
 }
 
 * {
@@ -15,6 +15,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
+  font-family: var(--font-dm-sans), "Helvetica Neue", Arial, sans-serif;
 }
 
 a {

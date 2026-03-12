@@ -39,27 +39,16 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   return (
-    <article className="space-y-6">
-      <header className="max-w-4xl space-y-4 pb-6">
-        <p className="text-xs tracking-[0.08em] text-stone-500 uppercase">Project</p>
-        <h1 className="font-serif text-5xl leading-tight text-ink md:text-6xl">{project.title}</h1>
-        <p className="text-sm tracking-[0.08em] text-stone-500 uppercase">
-          {project.year} · {project.location} · {project.medium} · {project.duration}
-        </p>
-        <p className="max-w-3xl text-base leading-8 text-stone-700">{project.intro}</p>
+    <article className="px-7 py-8 md:px-7">
+      <header className="mb-8 space-y-2 border-b border-stone-200 pb-7">
+        <p className="text-[26px] text-stone-500">{project.year}</p>
+        <h1 className="max-w-5xl text-5xl font-semibold leading-tight text-[#18233d] md:text-6xl">{project.title}</h1>
+        <p className="text-[28px] text-[#28324c]">{project.medium}</p>
       </header>
 
-      <section className="border-y border-stone-200 py-4">
-        <ul className="flex flex-wrap gap-3 text-xs tracking-[0.08em] text-stone-500 uppercase">
-          {project.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      </section>
-
-      <div>
+      <div className="space-y-8">
         {project.blocks.map((block, index) => (
-          <ProjectBlockRenderer block={block} key={`${project.slug}-${index}`} />
+          <ProjectBlockRenderer key={`${project.slug}-${index}`} block={block} />
         ))}
       </div>
     </article>

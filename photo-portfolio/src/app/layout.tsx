@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/content/site";
+import { getAllProjects } from "@/lib/projects";
+import { SiteSidebar } from "@/components/site-sidebar";
 
 const sans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
-});
-
-const serif = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -33,11 +27,6 @@ export const metadata: Metadata = {
     siteName: siteConfig.artistName,
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.artistName} | Photography`,
-    description: siteConfig.description,
-  },
 };
 
 export default function RootLayout({
@@ -45,13 +34,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const projects = getAllProjects();
+
   return (
     <html lang="zh-CN">
-      <body className={`${sans.variable} ${serif.variable} bg-paper text-ink antialiased`}>
-        <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 md:px-12">
-          <SiteHeader />
-          <main className="flex-1 pb-20">{children}</main>
-          <SiteFooter />
+      <body className={`${sans.variable} bg-paper text-ink antialiased`}>
+        <div className="min-h-screen md:grid md:grid-cols-[314px_1fr]">
+          <SiteSidebar projects={projects} />
+          <main className="min-h-screen">{children}</main>
         </div>
       </body>
     </html>

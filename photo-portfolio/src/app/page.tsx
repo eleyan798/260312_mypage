@@ -1,22 +1,36 @@
-import { ProjectCard } from "@/components/project-card";
+import Image from "next/image";
+import Link from "next/link";
 import { getAllProjects } from "@/lib/projects";
 
 export default function HomePage() {
   const projects = getAllProjects();
+  const latestProject = projects[0];
 
   return (
-    <section className="space-y-8">
-      <div className="max-w-3xl space-y-4 pb-6">
-        <p className="text-xs tracking-[0.08em] text-stone-500 uppercase">Selected Works</p>
-        <p className="text-base leading-8 text-stone-700 md:text-lg">
-          This index presents photographic projects in chronological fragments. Each project page keeps a slow rhythm,
-          balancing image sequence, silence, and context.
-        </p>
-      </div>
-      <div>
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+    <section className="relative min-h-[58vh] md:min-h-screen">
+      {latestProject ? (
+        <Image
+          src={latestProject.cover.src}
+          alt={latestProject.cover.alt}
+          fill
+          priority
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, calc(100vw - 314px)"
+        />
+      ) : null}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
+
+      <div className="absolute bottom-8 left-8 z-10 text-white md:bottom-10 md:left-8">
+        <p className="text-[22px] font-medium tracking-[0.02em]">WORK AS AN INDEX.</p>
+        <div className="mt-2 flex gap-5 text-[25px] font-medium tracking-[0.03em]">
+          <Link href="/work" className="border-b border-white/80 pb-0.5 leading-none">ENTER WORK</Link>
+          {latestProject ? (
+            <Link href={`/projects/${latestProject.slug}`} className="border-b border-white/80 pb-0.5 leading-none">
+              LATEST PROJECT
+            </Link>
+          ) : null}
+        </div>
       </div>
     </section>
   );

@@ -1,54 +1,41 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "CV",
   description: "Exhibitions, publications, and education.",
 };
 
-const exhibitions = [
-  "2025 — Group Exhibition, Slow Looking, Hangzhou",
-  "2024 — Solo Presentation, Quiet Tide, Shanghai",
-  "2023 — Group Exhibition, Night Transit, Seoul",
+const cvSections = [
+  {
+    title: "Education",
+    items: ["2021-2025  BEng, Southeast University", "2025  Exchange Study, Visual Communication Workshop"],
+  },
+  {
+    title: "Selected Projects",
+    items: ["2025  冬夜小聚 / Winter Gathering", "2024  Quiet Tide", "2023  Subway Nocturne"],
+  },
+  {
+    title: "Exhibitions",
+    items: ["2025  Group Presentation, Nanjing", "2024  Student Image Week, Shanghai"],
+  },
 ];
-
-const publications = [
-  "2024 — Winter Orchard (Dummy), self-published",
-  "2023 — New East Photo Annual, contributor",
-];
-
-const education = ["MFA Photography, 2020, China Academy of Art", "BFA Visual Communication, 2017, Tongji University"];
 
 export default function CvPage() {
   return (
-    <section className="space-y-12">
-      <h1 className="font-serif text-5xl text-ink md:text-6xl">CV</h1>
-
-      <section className="space-y-4 border-t border-stone-200 pt-6">
-        <h2 className="text-xs tracking-[0.08em] text-stone-500 uppercase">Exhibitions</h2>
-        <ul className="space-y-3 text-base text-stone-700">
-          {exhibitions.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="space-y-4 border-t border-stone-200 pt-6">
-        <h2 className="text-xs tracking-[0.08em] text-stone-500 uppercase">Publications</h2>
-        <ul className="space-y-3 text-base text-stone-700">
-          {publications.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="space-y-4 border-t border-stone-200 pt-6">
-        <h2 className="text-xs tracking-[0.08em] text-stone-500 uppercase">Education</h2>
-        <ul className="space-y-3 text-base text-stone-700">
-          {education.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
+    <section className="max-w-5xl px-7 py-8 md:px-8">
+      <h1 className="mb-5 text-5xl font-semibold text-[#0f1b33]">CV</h1>
+      <div className="space-y-10 border-t border-stone-200 pt-6">
+        {cvSections.map((section) => (
+          <section key={section.title} className="space-y-3">
+            <h2 className="text-sm font-semibold tracking-[0.08em] text-stone-500 uppercase">{section.title}</h2>
+            <ul className="space-y-2 text-lg leading-8 text-stone-700">
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </section>
   );
 }
