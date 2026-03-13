@@ -11,9 +11,9 @@ export function SiteSidebar({ projects }: SiteSidebarProps) {
       <div className="space-y-9 text-[#7f8591]">
         <div className="space-y-1">
           <Link href="/" className="block text-sm font-semibold tracking-[0.08em] uppercase text-[#7e8490]">
-            Yang Shilong
+            ELE YAN 798
           </Link>
-          <p className="text-[28px] leading-none text-[#757b87] md:text-[26px]">杨实隆</p>
+          <p className="text-[28px] leading-none text-[#757b87] md:text-[26px]">林培燊</p>
         </div>
 
         <section className="space-y-3">

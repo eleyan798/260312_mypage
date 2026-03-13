@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/12 to-transparent" />
 
       <div className="absolute bottom-8 left-8 z-10 text-white md:bottom-10 md:left-8">
-        <p className="text-[22px] font-medium tracking-[0.02em]">WORK AS AN INDEX.</p>
+        <p className="text-[22px] font-medium tracking-[0.02em]">祝我梦到那种有你的梦.</p>
         <div className="mt-2 flex gap-5 text-[25px] font-medium tracking-[0.03em]">
           <Link href="/work" className="border-b border-white/80 pb-0.5 leading-none">ENTER WORK</Link>
           {latestProject ? (
